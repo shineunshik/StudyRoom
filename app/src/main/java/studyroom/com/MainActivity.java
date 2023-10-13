@@ -1,20 +1,27 @@
 package studyroom.com;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    //교육 페이지
+    LinearLayout top_menu;
     TabLayout tablayout1;
     LinearLayout step1_layout,step2_layout,step3_layout,step4_layout;
     TextView step1,step2,step3,step4;
@@ -22,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewpager1,viewpager2,viewpager3,viewpager4;
     FragmentPagerAdapter fragmentPagerAdapter_A,fragmentPagerAdapter_B,fragmentPagerAdapter_C,fragmentPagerAdapter_D;
     int position;
+
+
+
+    //하단 바텀페이지
+    BottomNavigationView bottom_menu;
+    LinearLayout study_list_layout,home_layout,my_page_layout;
+    ViewPager viewpager_study,viewpager_home,viewpager_my_page;
+    FragmentPagerAdapter fragmentPagerAdapter_study_list,fragmentPagerAdapter_home,fragmentPagerAdapter_my_page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +59,20 @@ public class MainActivity extends AppCompatActivity {
         step2_layout=(LinearLayout)findViewById(R.id.step2_layout);
         step3_layout=(LinearLayout)findViewById(R.id.step3_layout);
         step4_layout=(LinearLayout)findViewById(R.id.step4_layout);
+        top_menu=(LinearLayout)findViewById(R.id.top_menu);
+        top_menu.setVisibility(View.VISIBLE);
+
+        //bottom menu
+        study_list_layout=(LinearLayout)findViewById(R.id.study_list_layout);
+        home_layout=(LinearLayout)findViewById(R.id.home_layout);
+        my_page_layout=(LinearLayout)findViewById(R.id.my_page_layout);
+        study_list_layout.setVisibility(View.GONE);
+        home_layout.setVisibility(View.GONE);
+        my_page_layout.setVisibility(View.GONE);
+
+        viewpager_study=(ViewPager)findViewById(R.id.viewpager_study);
+        viewpager_home=(ViewPager)findViewById(R.id.viewpager_home);
+        viewpager_my_page=(ViewPager)findViewById(R.id.viewpager_my_page);
 
         step1_line.setVisibility(View.VISIBLE); //보이게
         step2_line.setVisibility(View.INVISIBLE); //가림
@@ -73,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 step2_layout.setVisibility(View.GONE);
                 step3_layout.setVisibility(View.GONE);
                 step4_layout.setVisibility(View.GONE);
+
+                study_list_layout.setVisibility(View.GONE);
+                home_layout.setVisibility(View.GONE);
+                my_page_layout.setVisibility(View.GONE);
             }
         });
 
@@ -91,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 step1_layout.setVisibility(View.GONE);
                 step3_layout.setVisibility(View.GONE);
                 step4_layout.setVisibility(View.GONE);
+
+                study_list_layout.setVisibility(View.GONE);
+                home_layout.setVisibility(View.GONE);
+                my_page_layout.setVisibility(View.GONE);
             }
         });
 
@@ -109,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
                 step2_layout.setVisibility(View.GONE);
                 step1_layout.setVisibility(View.GONE);
                 step4_layout.setVisibility(View.GONE);
+
+                study_list_layout.setVisibility(View.GONE);
+                home_layout.setVisibility(View.GONE);
+                my_page_layout.setVisibility(View.GONE);
             }
         });
 
@@ -127,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
                 step2_layout.setVisibility(View.GONE);
                 step3_layout.setVisibility(View.GONE);
                 step1_layout.setVisibility(View.GONE);
+
+                study_list_layout.setVisibility(View.GONE);
+                home_layout.setVisibility(View.GONE);
+                my_page_layout.setVisibility(View.GONE);
             }
         });
 
@@ -165,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //top_menu
         fragmentPagerAdapter_B = new ViewPagerAdapter_B(getSupportFragmentManager(),1);
         viewpager2.setAdapter(fragmentPagerAdapter_B);
 
@@ -174,6 +219,106 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentPagerAdapter_D = new ViewPagerAdapter_D(getSupportFragmentManager(),1);
         viewpager4.setAdapter(fragmentPagerAdapter_D);
+
+
+
+
+        //bottom_menu
+        fragmentPagerAdapter_study_list = new ViewPagerAdapter_Study_List(getSupportFragmentManager(),1);
+        viewpager_study.setAdapter(fragmentPagerAdapter_study_list);
+
+        fragmentPagerAdapter_home = new ViewPagerAdapter_Home(getSupportFragmentManager(),1);
+        viewpager_home.setAdapter(fragmentPagerAdapter_home);
+
+        fragmentPagerAdapter_my_page = new ViewPagerAdapter_My_Page(getSupportFragmentManager(),1);
+        viewpager_my_page.setAdapter(fragmentPagerAdapter_my_page);
+
+
+
+        bottom_menu=(BottomNavigationView)findViewById(R.id.bottom_menu);
+        bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId()==R.id.board){
+                    top_menu.setVisibility(View.VISIBLE);
+
+                    step1_line.setVisibility(View.VISIBLE); //보이게
+                    step2_line.setVisibility(View.INVISIBLE); //가림
+                    step3_line.setVisibility(View.INVISIBLE); //가림
+                    step4_line.setVisibility(View.INVISIBLE); //가림
+                    step1.setTextColor(Color.parseColor("#000000"));
+                    step2.setTextColor(Color.parseColor("#D3D3D3"));
+                    step3.setTextColor(Color.parseColor("#D3D3D3"));
+                    step4.setTextColor(Color.parseColor("#D3D3D3"));
+                    step1_layout.setVisibility(View.VISIBLE);
+                    step2_layout.setVisibility(View.GONE);
+                    step3_layout.setVisibility(View.GONE);
+                    step4_layout.setVisibility(View.GONE);
+
+                    study_list_layout.setVisibility(View.GONE);
+                    home_layout.setVisibility(View.GONE);
+                    my_page_layout.setVisibility(View.GONE);
+
+                }
+                else if (item.getItemId()==R.id.list){
+                    top_menu.setVisibility(View.GONE);
+
+                    step1_layout.setVisibility(View.GONE);
+                    step2_layout.setVisibility(View.GONE);
+                    step3_layout.setVisibility(View.GONE);
+                    step4_layout.setVisibility(View.GONE);
+
+                    study_list_layout.setVisibility(View.VISIBLE);
+                    home_layout.setVisibility(View.GONE);
+                    my_page_layout.setVisibility(View.GONE);
+                }
+
+                else if (item.getItemId()==R.id.home){
+                    top_menu.setVisibility(View.GONE);
+
+                    step1_layout.setVisibility(View.GONE);
+                    step2_layout.setVisibility(View.GONE);
+                    step3_layout.setVisibility(View.GONE);
+                    step4_layout.setVisibility(View.GONE);
+
+                    study_list_layout.setVisibility(View.GONE);
+                    home_layout.setVisibility(View.VISIBLE);
+                    my_page_layout.setVisibility(View.GONE);
+                }
+                else if (item.getItemId()==R.id.mypage){
+                    top_menu.setVisibility(View.GONE);
+
+                    step1_layout.setVisibility(View.GONE);
+                    step2_layout.setVisibility(View.GONE);
+                    step3_layout.setVisibility(View.GONE);
+                    step4_layout.setVisibility(View.GONE);
+
+                    study_list_layout.setVisibility(View.GONE);
+                    home_layout.setVisibility(View.GONE);
+                    my_page_layout.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
