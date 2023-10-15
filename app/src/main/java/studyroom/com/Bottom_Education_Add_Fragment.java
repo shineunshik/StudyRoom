@@ -24,35 +24,26 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class Bottom_My_Page_Fragment extends Fragment {
+public class Bottom_Education_Add_Fragment extends Fragment {
 
+    TextView next;
     View view;
-    TextView step1,step2,step3;
-    ImageView step1_line,step2_line,step3_line;
 
-    LinearLayout my_layout,list_layout,list2_layout;
 
-    TextView logout;
-
+    TextView step1,step2,step3,step4;
+    LinearLayout step1_layout,step2_layout,step3_layout,step4_layout;
+    ImageView step1_line,step2_line,step3_line,step4_line;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     ArrayList<Ob_Education> arrayList;
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
-
-
-
-    FirebaseDatabase database2;
-    DatabaseReference databaseReference2;
-    ArrayList<Ob_Education> arrayList2;
-    RecyclerView recyclerview2;
-    RecyclerView.Adapter adapter2;
-    public Bottom_My_Page_Fragment() {
+    public Bottom_Education_Add_Fragment() {
     }
 
-    public static Bottom_My_Page_Fragment newInstance() {
-        Bottom_My_Page_Fragment fragment = new Bottom_My_Page_Fragment();
+    public static Bottom_Education_Add_Fragment newInstance() {
+        Bottom_Education_Add_Fragment fragment = new Bottom_Education_Add_Fragment();
         return fragment;
     }
 
@@ -63,29 +54,33 @@ public class Bottom_My_Page_Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_my_page, container, false);
+        view =  inflater.inflate(R.layout.fragment_education_add, container, false);
 
         step1=(TextView)view.findViewById(R.id.step1);
         step2=(TextView)view.findViewById(R.id.step2);
         step3=(TextView)view.findViewById(R.id.step3);
+        step4=(TextView)view.findViewById(R.id.step4);
         step1_line=(ImageView)view.findViewById(R.id.step1_line);
         step2_line=(ImageView)view.findViewById(R.id.step2_line);
         step3_line=(ImageView)view.findViewById(R.id.step3_line);
+        step4_line=(ImageView)view.findViewById(R.id.step4_line);
+        step1_layout=(LinearLayout)view.findViewById(R.id.step1_layout);
+        step2_layout=(LinearLayout)view.findViewById(R.id.step2_layout);
+        step3_layout=(LinearLayout)view.findViewById(R.id.step3_layout);
+        step4_layout=(LinearLayout)view.findViewById(R.id.step4_layout);
 
-        my_layout=(LinearLayout)view.findViewById(R.id.my_layout);
-        list_layout=(LinearLayout)view.findViewById(R.id.list_layout);
-        list2_layout=(LinearLayout)view.findViewById(R.id.list2_layout);
-        my_layout.setVisibility(View.VISIBLE);
-        list_layout.setVisibility(View.GONE);
-        list2_layout.setVisibility(View.GONE);
-
-        step1.setTextColor(Color.parseColor("#000000"));
-        step2.setTextColor(Color.parseColor("#D3D3D3"));
-        step3.setTextColor(Color.parseColor("#D3D3D3"));
         step1_line.setVisibility(View.VISIBLE); //보이게
         step2_line.setVisibility(View.INVISIBLE); //가림
         step3_line.setVisibility(View.INVISIBLE); //가림
-
+        step4_line.setVisibility(View.INVISIBLE); //가림
+        step1.setTextColor(Color.parseColor("#000000"));
+        step2.setTextColor(Color.parseColor("#D3D3D3"));
+        step3.setTextColor(Color.parseColor("#D3D3D3"));
+        step4.setTextColor(Color.parseColor("#D3D3D3"));
+        step1_layout.setVisibility(View.VISIBLE);
+        step2_layout.setVisibility(View.GONE);
+        step3_layout.setVisibility(View.GONE);
+        step4_layout.setVisibility(View.GONE);
 
 
         step1.setOnClickListener(new View.OnClickListener() {
@@ -94,14 +89,15 @@ public class Bottom_My_Page_Fragment extends Fragment {
                 step1_line.setVisibility(View.VISIBLE); //보이게
                 step2_line.setVisibility(View.INVISIBLE); //가림
                 step3_line.setVisibility(View.INVISIBLE); //가림
-
+                step4_line.setVisibility(View.INVISIBLE); //가림
                 step1.setTextColor(Color.parseColor("#000000"));
                 step2.setTextColor(Color.parseColor("#D3D3D3"));
                 step3.setTextColor(Color.parseColor("#D3D3D3"));
-
-                my_layout.setVisibility(View.VISIBLE);
-                list_layout.setVisibility(View.GONE);
-                list2_layout.setVisibility(View.GONE);
+                step4.setTextColor(Color.parseColor("#D3D3D3"));
+                step1_layout.setVisibility(View.VISIBLE);
+                step2_layout.setVisibility(View.GONE);
+                step3_layout.setVisibility(View.GONE);
+                step4_layout.setVisibility(View.GONE);
 
             }
         });
@@ -112,37 +108,56 @@ public class Bottom_My_Page_Fragment extends Fragment {
                 step2_line.setVisibility(View.VISIBLE); //보이게
                 step1_line.setVisibility(View.INVISIBLE); //가림
                 step3_line.setVisibility(View.INVISIBLE); //가림
-
+                step4_line.setVisibility(View.INVISIBLE); //가림
                 step2.setTextColor(Color.parseColor("#000000"));
                 step1.setTextColor(Color.parseColor("#D3D3D3"));
                 step3.setTextColor(Color.parseColor("#D3D3D3"));
+                step4.setTextColor(Color.parseColor("#D3D3D3"));
+                step2_layout.setVisibility(View.VISIBLE);
+                step1_layout.setVisibility(View.GONE);
+                step3_layout.setVisibility(View.GONE);
+                step4_layout.setVisibility(View.GONE);
 
-                my_layout.setVisibility(View.GONE);
-                list_layout.setVisibility(View.VISIBLE);
-                list2_layout.setVisibility(View.GONE);
             }
         });
 
         step3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                step2_line.setVisibility(View.INVISIBLE); //보이게
+                step3_line.setVisibility(View.VISIBLE); //보이게
+                step2_line.setVisibility(View.INVISIBLE); //가림
                 step1_line.setVisibility(View.INVISIBLE); //가림
-                step3_line.setVisibility(View.VISIBLE); //가림
-
+                step4_line.setVisibility(View.INVISIBLE); //가림
+                step3.setTextColor(Color.parseColor("#000000"));
                 step2.setTextColor(Color.parseColor("#D3D3D3"));
                 step1.setTextColor(Color.parseColor("#D3D3D3"));
-                step3.setTextColor(Color.parseColor("#000000"));
+                step4.setTextColor(Color.parseColor("#D3D3D3"));
+                step3_layout.setVisibility(View.VISIBLE);
+                step2_layout.setVisibility(View.GONE);
+                step1_layout.setVisibility(View.GONE);
+                step4_layout.setVisibility(View.GONE);
 
-                my_layout.setVisibility(View.GONE);
-                list_layout.setVisibility(View.GONE);
-                list2_layout.setVisibility(View.VISIBLE);
             }
         });
 
+        step4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                step4_line.setVisibility(View.VISIBLE); //보이게
+                step2_line.setVisibility(View.INVISIBLE); //가림
+                step3_line.setVisibility(View.INVISIBLE); //가림
+                step1_line.setVisibility(View.INVISIBLE); //가림
+                step4.setTextColor(Color.parseColor("#000000"));
+                step2.setTextColor(Color.parseColor("#D3D3D3"));
+                step3.setTextColor(Color.parseColor("#D3D3D3"));
+                step1.setTextColor(Color.parseColor("#D3D3D3"));
+                step4_layout.setVisibility(View.VISIBLE);
+                step2_layout.setVisibility(View.GONE);
+                step3_layout.setVisibility(View.GONE);
+                step1_layout.setVisibility(View.GONE);
 
-
-
+            }
+        });
 
         recyclerview=(RecyclerView)view.findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -156,8 +171,8 @@ public class Bottom_My_Page_Fragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                database= FirebaseDatabase.getInstance("https://doctorlinkapp-222b7-default-rtdb.firebaseio.com/");
-                databaseReference=database.getReference("교육").child("교육이력");
+                database=FirebaseDatabase.getInstance("https://doctorlinkapp-222b7-default-rtdb.firebaseio.com/");
+                databaseReference=database.getReference("교육").child("edu_add");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -183,56 +198,14 @@ public class Bottom_My_Page_Fragment extends Fragment {
         }).start();
 
 
-
-
-        recyclerview2=(RecyclerView)view.findViewById(R.id.recyclerview2);
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getActivity());
-        linearLayoutManager2.setReverseLayout(true); //리사이클러뷰 역순으로 보여짐
-        linearLayoutManager2.setStackFromEnd(true);
-        recyclerview2.setLayoutManager(linearLayoutManager2);
-        arrayList2 = new ArrayList<>();
-        adapter2= new CustomAdapter_My_Info(arrayList2, getActivity());
-        recyclerview2.setAdapter(adapter2);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                database2= FirebaseDatabase.getInstance("https://doctorlinkapp-222b7-default-rtdb.firebaseio.com/");
-                databaseReference2=database2.getReference("교육").child("이력서");
-                databaseReference2.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        try {
-                            arrayList2.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                arrayList2.add(dataSnapshot.getValue(Ob_Education.class));
-                            }
-                        }
-                        catch (NullPointerException nullPointerException){
-                        }
-
-
-                        adapter2.notifyDataSetChanged();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        }).start();
-
-        logout =(TextView) view.findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
+        next=(TextView) view.findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Login_Activity.class);
-                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent intent = new Intent(getActivity(), Education_Add.class);
                 startActivity(intent);
             }
         });
-
 
 
         return view;

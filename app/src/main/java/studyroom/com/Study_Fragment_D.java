@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,7 +23,7 @@ public class Study_Fragment_D extends Fragment {
     View view;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    ArrayList<Ob_Study> arrayList;
+    ArrayList<Ob_Education> arrayList;
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
     public Study_Fragment_D() {
@@ -53,7 +52,7 @@ public class Study_Fragment_D extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerview.setLayoutManager(linearLayoutManager);
         arrayList = new ArrayList<>();
-        adapter= new CustomAdapter_Study(arrayList, getActivity());
+        adapter= new CustomAdapter_Education(arrayList, getActivity());
         recyclerview.setAdapter(adapter);
 
         database=FirebaseDatabase.getInstance("https://doctorlinkapp-222b7-default-rtdb.firebaseio.com/");
@@ -67,7 +66,7 @@ public class Study_Fragment_D extends Fragment {
                         try {
                             arrayList.clear();
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                arrayList.add(dataSnapshot.getValue(Ob_Study.class));
+                                arrayList.add(dataSnapshot.getValue(Ob_Education.class));
                             }
                         }
                         catch (NullPointerException nullPointerException){

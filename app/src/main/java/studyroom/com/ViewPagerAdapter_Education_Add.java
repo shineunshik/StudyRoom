@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class ViewPagerAdapter_Study_List extends FragmentPagerAdapter {
+public class ViewPagerAdapter_Education_Add extends FragmentPagerAdapter {
 
     int tabCount;
     String type;
 
-    public ViewPagerAdapter_Study_List(FragmentManager fragmentManager, int tabCount){
+    public ViewPagerAdapter_Education_Add(FragmentManager fragmentManager, int tabCount){
         super(fragmentManager);
         this.tabCount=tabCount;
 
@@ -21,7 +21,7 @@ public class ViewPagerAdapter_Study_List extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return Bottom_Study_List_Fragment.newInstance();
+                return Bottom_Education_Add_Fragment.newInstance();
 
             default:
                 return null;

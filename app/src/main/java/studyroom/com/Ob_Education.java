@@ -1,13 +1,22 @@
 package studyroom.com;
 
-public class Ob_Study {
+public class Ob_Education {
     String title;
     String image;
     String name;
     String memo;
+    String content;
 
-    public Ob_Study(){
+    public Ob_Education(){
 
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getMemo() {

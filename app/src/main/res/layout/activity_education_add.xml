@@ -4,56 +4,27 @@
     android:layout_marginHorizontal="20dp"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Bottom_Education_List_Fragment">
 
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
+        android:layout_marginVertical="20dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_gravity="center"
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="커뮤니티"
-                android:textSize="17dp"
-                android:textColor="@color/black"/>
-        </LinearLayout>
+            android:text="교육 등록"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-        </LinearLayout>
     </LinearLayout>
 
-
-
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -62,40 +33,13 @@
             android:textSize="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="이름"/>
+            android:text="강사명"/>
         <EditText
             android:id="@+id/name"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/editbox"
-            android:maxLength="10"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:paddingVertical="17dp"
-            android:paddingLeft="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="#DCDCDC"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="13dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="제목"/>
-        <EditText
-            android:id="@+id/title"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/editbox"
+            android:background="@drawable/write_box2"
             android:maxLength="20"
             android:singleLine="true"
             android:maxLines="1"
@@ -107,6 +51,32 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="5dp"
+            android:textSize="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="과정명"/>
+        <EditText
+            android:id="@+id/title"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/write_box2"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:paddingVertical="17dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="#DCDCDC"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -119,16 +89,16 @@
             android:textSize="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="질문"/>
+            android:text="커리큘럼"/>
         <EditText
             android:gravity="top"
-            android:id="@+id/memo"
+            android:id="@+id/content"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/editbox"
-            android:maxLength="100"
-            android:maxLines="10"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/write_box2"
+            android:maxLines="20"
             android:paddingVertical="17dp"
             android:paddingLeft="10dp"
             android:textColor="@color/black"
@@ -136,13 +106,6 @@
             android:textSize="17dp"
             android:textStyle="bold" />
     </LinearLayout>
-
-
-
-
-
-
-
 
     <LinearLayout
         android:layout_marginBottom="20dp"
@@ -158,10 +121,12 @@
             android:paddingVertical="15dp"
             android:background="@drawable/write_box"
             android:textSize="17dp"
-            android:text="질문하기"
+            android:text="등록 하기"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+
 
 
 

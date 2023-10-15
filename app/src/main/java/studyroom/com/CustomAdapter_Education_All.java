@@ -14,12 +14,12 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class CustomAdapter_Road extends RecyclerView.Adapter<CustomAdapter_Road.CustomViewHolder>{
+public class CustomAdapter_Education_All extends RecyclerView.Adapter<CustomAdapter_Education_All.CustomViewHolder>{
 
     ArrayList<Ob_Education> arrayList;
     Context context;
 
-    public CustomAdapter_Road(ArrayList<Ob_Education> arrayList, Context context){
+    public CustomAdapter_Education_All(ArrayList<Ob_Education> arrayList, Context context){
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -27,21 +27,18 @@ public class CustomAdapter_Road extends RecyclerView.Adapter<CustomAdapter_Road.
 
     @NonNull
     @Override
-    public CustomAdapter_Road.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.road_list_form,parent,false);
-        CustomAdapter_Road.CustomViewHolder customViewHolder = new CustomAdapter_Road.CustomViewHolder(view);
+    public CustomAdapter_Education_All.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.education_list_all_form,parent,false);
+        CustomAdapter_Education_All.CustomViewHolder customViewHolder = new CustomAdapter_Education_All.CustomViewHolder(view);
         return customViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter_Road.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomAdapter_Education_All.CustomViewHolder holder, int position) {
 
         holder.name.setText(arrayList.get(position).getName());
         holder.title.setText(arrayList.get(position).getTitle());
 
-        Glide.with(context)
-                .load(arrayList.get(position).getImage())
-                .into(holder.image);
 
     }
 
@@ -56,12 +53,11 @@ public class CustomAdapter_Road extends RecyclerView.Adapter<CustomAdapter_Road.
 
         TextView name,title;
 
-        ImageView image;
+
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             this.name = itemView.findViewById(R.id.name);
-            this.image = itemView.findViewById(R.id.image);
             this.title = itemView.findViewById(R.id.title);
 
 

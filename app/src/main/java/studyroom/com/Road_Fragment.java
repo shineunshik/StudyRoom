@@ -24,7 +24,7 @@ public class Road_Fragment extends Fragment {
     View view;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    ArrayList<Ob_Study> arrayList;
+    ArrayList<Ob_Education> arrayList;
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
 
@@ -67,7 +67,7 @@ public class Road_Fragment extends Fragment {
                         try {
                             arrayList.clear();
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                arrayList.add(dataSnapshot.getValue(Ob_Study.class));
+                                arrayList.add(dataSnapshot.getValue(Ob_Education.class));
                             }
                         }
                         catch (NullPointerException nullPointerException){

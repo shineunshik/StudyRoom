@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:icon="@drawable/home"
+        android:id="@+id/home"
+        android:enabled="true"
+        android:title="홈"/>
 
     <item
         android:icon="@drawable/book"
@@ -8,17 +12,17 @@
         android:enabled="true"
         android:title="교육"/>
 
-    <item
+  <!--  <item
         android:icon="@drawable/list"
         android:id="@+id/list"
         android:enabled="true"
         android:title="교육 이력"/>
-
+-->
     <item
-        android:icon="@drawable/home"
-        android:id="@+id/home"
+        android:icon="@drawable/education_add"
+        android:id="@+id/edu_add"
         android:enabled="true"
-        android:title="홈"/>
+        android:title="교육 관리"/>
     <item
         android:icon="@drawable/mypage"
         android:id="@+id/mypage"

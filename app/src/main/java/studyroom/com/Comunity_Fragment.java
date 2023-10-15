@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +25,7 @@ public class Comunity_Fragment extends Fragment {
     View view;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    ArrayList<Ob_Study> arrayList;
+    ArrayList<Ob_Education> arrayList;
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
     TextView write;
@@ -58,7 +57,7 @@ public class Comunity_Fragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerview.setLayoutManager(linearLayoutManager);
         arrayList = new ArrayList<>();
-        adapter= new CustomAdapter_Etc(arrayList, getActivity());
+        adapter= new CustomAdapter_Comunity(arrayList, getActivity());
         recyclerview.setAdapter(adapter);
 
         database=FirebaseDatabase.getInstance("https://doctorlinkapp-222b7-default-rtdb.firebaseio.com/");
@@ -66,19 +65,16 @@ public class Comunity_Fragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            arrayList.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                arrayList.add(dataSnapshot.getValue(Ob_Study.class));
-                            }
-                        }
-                        catch (NullPointerException nullPointerException){
+
+                    try {
+                        arrayList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            arrayList.add(dataSnapshot.getValue(Ob_Education.class));
                         }
                     }
-                }).start();
+                    catch (NullPointerException nullPointerException){
+                    }
+
 
                 adapter.notifyDataSetChanged();
             }

@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
+
+    BackPressClose backPressClose;
 
     //교육 페이지
     LinearLayout top_menu;
@@ -34,14 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
     //하단 바텀페이지
     BottomNavigationView bottom_menu;
-    LinearLayout study_list_layout,home_layout,my_page_layout;
-    ViewPager viewpager_study,viewpager_home,viewpager_my_page;
-    FragmentPagerAdapter fragmentPagerAdapter_study_list,fragmentPagerAdapter_home,fragmentPagerAdapter_my_page;
+    LinearLayout study_list_layout,home_layout,my_page_layout,add_layout;
+    ViewPager viewpager_study,viewpager_home,viewpager_my_page,viewpager_edu_add;
+    FragmentPagerAdapter fragmentPagerAdapter_study_list,fragmentPagerAdapter_home,fragmentPagerAdapter_my_page,fragmentPagerAdapter_education_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        backPressClose = new BackPressClose(this);
 
         step1=(TextView)findViewById(R.id.step1);
         step2=(TextView)findViewById(R.id.step2);
@@ -60,19 +63,22 @@ public class MainActivity extends AppCompatActivity {
         step3_layout=(LinearLayout)findViewById(R.id.step3_layout);
         step4_layout=(LinearLayout)findViewById(R.id.step4_layout);
         top_menu=(LinearLayout)findViewById(R.id.top_menu);
-        top_menu.setVisibility(View.VISIBLE);
+        top_menu.setVisibility(View.GONE);
 
         //bottom menu
         study_list_layout=(LinearLayout)findViewById(R.id.study_list_layout);
         home_layout=(LinearLayout)findViewById(R.id.home_layout);
         my_page_layout=(LinearLayout)findViewById(R.id.my_page_layout);
+        add_layout=(LinearLayout)findViewById(R.id.add_layout);
         study_list_layout.setVisibility(View.GONE);
-        home_layout.setVisibility(View.GONE);
+        home_layout.setVisibility(View.VISIBLE);
         my_page_layout.setVisibility(View.GONE);
+        add_layout.setVisibility(View.GONE);
 
         viewpager_study=(ViewPager)findViewById(R.id.viewpager_study);
         viewpager_home=(ViewPager)findViewById(R.id.viewpager_home);
         viewpager_my_page=(ViewPager)findViewById(R.id.viewpager_my_page);
+        viewpager_edu_add=(ViewPager)findViewById(R.id.viewpager_edu_add);
 
         step1_line.setVisibility(View.VISIBLE); //보이게
         step2_line.setVisibility(View.INVISIBLE); //가림
@@ -82,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         step2.setTextColor(Color.parseColor("#D3D3D3"));
         step3.setTextColor(Color.parseColor("#D3D3D3"));
         step4.setTextColor(Color.parseColor("#D3D3D3"));
-        step1_layout.setVisibility(View.VISIBLE);
+        step1_layout.setVisibility(View.GONE);
         step2_layout.setVisibility(View.GONE);
         step3_layout.setVisibility(View.GONE);
         step4_layout.setVisibility(View.GONE);
@@ -224,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //bottom_menu
-        fragmentPagerAdapter_study_list = new ViewPagerAdapter_Study_List(getSupportFragmentManager(),1);
+        fragmentPagerAdapter_study_list = new ViewPagerAdapter_Education_List(getSupportFragmentManager(),1);
         viewpager_study.setAdapter(fragmentPagerAdapter_study_list);
 
         fragmentPagerAdapter_home = new ViewPagerAdapter_Home(getSupportFragmentManager(),1);
@@ -232,6 +238,9 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentPagerAdapter_my_page = new ViewPagerAdapter_My_Page(getSupportFragmentManager(),1);
         viewpager_my_page.setAdapter(fragmentPagerAdapter_my_page);
+
+        fragmentPagerAdapter_education_add = new ViewPagerAdapter_Education_Add(getSupportFragmentManager(),1);
+        viewpager_edu_add.setAdapter(fragmentPagerAdapter_education_add);
 
 
 
@@ -260,20 +269,22 @@ public class MainActivity extends AppCompatActivity {
                     study_list_layout.setVisibility(View.GONE);
                     home_layout.setVisibility(View.GONE);
                     my_page_layout.setVisibility(View.GONE);
+                    add_layout.setVisibility(View.GONE);
 
                 }
-                else if (item.getItemId()==R.id.list){
-                    top_menu.setVisibility(View.GONE);
-
-                    step1_layout.setVisibility(View.GONE);
-                    step2_layout.setVisibility(View.GONE);
-                    step3_layout.setVisibility(View.GONE);
-                    step4_layout.setVisibility(View.GONE);
-
-                    study_list_layout.setVisibility(View.VISIBLE);
-                    home_layout.setVisibility(View.GONE);
-                    my_page_layout.setVisibility(View.GONE);
-                }
+          //      else if (item.getItemId()==R.id.list){
+          //          top_menu.setVisibility(View.GONE);
+//
+           //         step1_layout.setVisibility(View.GONE);
+          //          step2_layout.setVisibility(View.GONE);
+           //         step3_layout.setVisibility(View.GONE);
+          //          step4_layout.setVisibility(View.GONE);
+//
+          //          study_list_layout.setVisibility(View.VISIBLE);
+          //          home_layout.setVisibility(View.GONE);
+          //          my_page_layout.setVisibility(View.GONE);
+          //          add_layout.setVisibility(View.GONE);
+          //      }
 
                 else if (item.getItemId()==R.id.home){
                     top_menu.setVisibility(View.GONE);
@@ -286,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
                     study_list_layout.setVisibility(View.GONE);
                     home_layout.setVisibility(View.VISIBLE);
                     my_page_layout.setVisibility(View.GONE);
+                    add_layout.setVisibility(View.GONE);
                 }
                 else if (item.getItemId()==R.id.mypage){
                     top_menu.setVisibility(View.GONE);
@@ -298,28 +310,30 @@ public class MainActivity extends AppCompatActivity {
                     study_list_layout.setVisibility(View.GONE);
                     home_layout.setVisibility(View.GONE);
                     my_page_layout.setVisibility(View.VISIBLE);
+                    add_layout.setVisibility(View.GONE);
+                }
+                else if (item.getItemId()==R.id.edu_add){
+                    top_menu.setVisibility(View.GONE);
+
+                    step1_layout.setVisibility(View.GONE);
+                    step2_layout.setVisibility(View.GONE);
+                    step3_layout.setVisibility(View.GONE);
+                    step4_layout.setVisibility(View.GONE);
+
+                    study_list_layout.setVisibility(View.GONE);
+                    home_layout.setVisibility(View.GONE);
+                    my_page_layout.setVisibility(View.GONE);
+                    add_layout.setVisibility(View.VISIBLE);
                 }
                 return true;
             }
         });
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //뒤로가기 두 번 클릭 시 앱 종료
+    @Override
+    public void onBackPressed(){
+        backPressClose.onBackPressed();
     }
 }

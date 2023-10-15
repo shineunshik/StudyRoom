@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +24,7 @@ public class Study_Fragment_A extends Fragment {
     View view;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    ArrayList<Ob_Study> arrayList;
+    ArrayList<Ob_Education> arrayList;
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
 
@@ -56,7 +55,7 @@ public class Study_Fragment_A extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerview.setLayoutManager(linearLayoutManager);
         arrayList = new ArrayList<>();
-        adapter= new CustomAdapter_Study(arrayList, getActivity());
+        adapter= new CustomAdapter_Education(arrayList, getActivity());
         recyclerview.setAdapter(adapter);
 
         new Thread(new Runnable() {
@@ -71,7 +70,7 @@ public class Study_Fragment_A extends Fragment {
                             try {
                                 arrayList.clear();
                                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                    arrayList.add(dataSnapshot.getValue(Ob_Study.class));
+                                    arrayList.add(dataSnapshot.getValue(Ob_Education.class));
                                 }
                             }
                             catch (NullPointerException nullPointerException){

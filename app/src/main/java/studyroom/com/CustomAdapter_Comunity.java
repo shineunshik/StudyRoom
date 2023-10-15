@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter_Etc extends RecyclerView.Adapter<CustomAdapter_Etc.CustomViewHolder>{
+public class CustomAdapter_Comunity extends RecyclerView.Adapter<CustomAdapter_Comunity.CustomViewHolder>{
 
     ArrayList<Ob_Education> arrayList;
     Context context;
 
-    public CustomAdapter_Etc(ArrayList<Ob_Education> arrayList, Context context){
+    public CustomAdapter_Comunity(ArrayList<Ob_Education> arrayList, Context context){
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -25,14 +25,14 @@ public class CustomAdapter_Etc extends RecyclerView.Adapter<CustomAdapter_Etc.Cu
 
     @NonNull
     @Override
-    public CustomAdapter_Etc.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomAdapter_Comunity.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.etc_list_form,parent,false);
-        CustomAdapter_Etc.CustomViewHolder customViewHolder = new CustomAdapter_Etc.CustomViewHolder(view);
+        CustomAdapter_Comunity.CustomViewHolder customViewHolder = new CustomAdapter_Comunity.CustomViewHolder(view);
         return customViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter_Etc.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomAdapter_Comunity.CustomViewHolder holder, int position) {
 
         holder.name.setText(arrayList.get(position).getName());
         holder.title.setText(arrayList.get(position).getTitle());
@@ -69,7 +69,7 @@ public class CustomAdapter_Etc extends RecyclerView.Adapter<CustomAdapter_Etc.Cu
                     intent.putExtra("name",arrayList.get(position).getName());
                     intent.putExtra("title",arrayList.get(position).getTitle());
                     intent.putExtra("memo",arrayList.get(position).getMemo());
-                    intent.putExtra("layout","멘토링");
+                    intent.putExtra("layout","커뮤니티");
                     context.startActivity(intent);
                 }
             });
