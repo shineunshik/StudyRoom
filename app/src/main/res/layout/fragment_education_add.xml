@@ -18,7 +18,7 @@
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"
             android:gravity="center"
-            android:text="교육 관리"
+            android:text="교육 관리(강사 전용)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -134,13 +134,93 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textSize="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="강사명"/>
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/write_box2"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:paddingVertical="17dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#DCDCDC"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textSize="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="과정명"/>
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/write_box2"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:paddingVertical="17dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#DCDCDC"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textSize="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="커리큘럼"/>
+                <EditText
+                    android:gravity="top"
+                    android:id="@+id/content"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/write_box2"
+                    android:maxLines="20"
+                    android:paddingVertical="17dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#DCDCDC"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -172,7 +252,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
 
         <LinearLayout

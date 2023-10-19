@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,6 +40,8 @@ public class Bottom_Education_Add_Fragment extends Fragment {
     ArrayList<Ob_Education> arrayList;
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
+
+    EditText content,title,name;
     public Bottom_Education_Add_Fragment() {
     }
 
@@ -198,12 +201,17 @@ public class Bottom_Education_Add_Fragment extends Fragment {
         }).start();
 
 
+        content=(EditText)view.findViewById(R.id.content);
+        title=(EditText)view.findViewById(R.id.title);
+        name=(EditText)view.findViewById(R.id.name);
+
         next=(TextView) view.findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Education_Add.class);
-                startActivity(intent);
+                content.setText("");
+                title.setText("");
+                name.setText("");
             }
         });
 

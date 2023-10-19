@@ -1,6 +1,7 @@
 package studyroom.com;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class CustomAdapter_Education extends RecyclerView.Adapter<CustomAdapter_
     @NonNull
     @Override
     public CustomAdapter_Education.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.stuty_list_form,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.study_list_form,parent,false);
         CustomAdapter_Education.CustomViewHolder customViewHolder = new CustomAdapter_Education.CustomViewHolder(view);
         return customViewHolder;
     }
@@ -67,6 +68,15 @@ public class CustomAdapter_Education extends RecyclerView.Adapter<CustomAdapter_
 
             view = itemView;
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getLayoutPosition();
+                    Intent intent = new Intent(context, Road_Info.class);
+                    intent.putExtra("url",arrayList.get(position).getUrl());
+                    context.startActivity(intent);
+                }
+            });
 
 
         }

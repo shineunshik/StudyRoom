@@ -1,4 +1,4 @@
-package studyroom.com;
+pckage studyroom.com;
 
 import android.content.Context;
 

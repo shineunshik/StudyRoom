@@ -43,73 +43,70 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <ImageView
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:src="#F0F0F0"/>
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="300dp">
+
                 <LinearLayout
+                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
                         android:textSize="17dp"
                         android:textStyle="bold"
-                        android:layout_marginVertical="5dp"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="신청 가능항 교육"/>
-                    <TextView
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="모두보기"/>
+                        android:text="신청 가능한 교육"/>
+
 
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <ImageView
                 android:layout_marginVertical="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:src="@color/black"/>
+                android:layout_height="1dp"
+                android:src="#F0F0F0"/>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="300dp">
 
 
                 <LinearLayout
+                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
                         android:textSize="17dp"
                         android:textStyle="bold"
-                        android:layout_marginVertical="5dp"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="커뮤니티"/>
-                    <TextView
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="모두보기"/>
+
 
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview2"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </LinearLayout>

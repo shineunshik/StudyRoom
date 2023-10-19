@@ -1,9 +1,11 @@
 package studyroom.com;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,6 +29,8 @@ public class Mento_Fragment extends Fragment {
     RecyclerView recyclerview;
     RecyclerView.Adapter adapter;
 
+    TextView write;
+
     public Mento_Fragment() {
 
     }
@@ -45,7 +49,7 @@ public class Mento_Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_study_a, container, false);
+        view = inflater.inflate(R.layout.fragment_mento, container, false);
 
 
         recyclerview=(RecyclerView)view.findViewById(R.id.recyclerview);
@@ -62,9 +66,7 @@ public class Mento_Fragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+
                         try {
                             arrayList.clear();
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -73,14 +75,24 @@ public class Mento_Fragment extends Fragment {
                         }
                         catch (NullPointerException nullPointerException){
                         }
-                    }
-                }).start();
+
 
                 adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+
+        write = (TextView)view.findViewById(R.id.write);
+        write.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Comunity_Write.class);
+                intent.putExtra("type","멘토");
+                startActivity(intent);
             }
         });
 

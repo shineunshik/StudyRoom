@@ -89,6 +89,7 @@ public class Comunity_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),Comunity_Write.class);
+                intent.putExtra("type","커뮤니티");
                 startActivity(intent);
             }
         });

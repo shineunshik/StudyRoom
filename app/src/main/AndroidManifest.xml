@@ -13,6 +13,9 @@
         android:theme="@style/Theme.StudyRoom"
         tools:targetApi="33">
         <activity
+            android:name=".Road_Info"
+            android:exported="false" />
+        <activity
             android:name=".Login_Activity"
             android:exported="false" />
         <activity
@@ -26,7 +29,8 @@
         </activity>
         <activity
             android:name=".Mento_Info_view"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
             android:name=".Education_Add"
             android:exported="false" />
@@ -35,7 +39,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

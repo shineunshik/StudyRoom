@@ -28,7 +28,7 @@ public class CustomAdapter_Education_All extends RecyclerView.Adapter<CustomAdap
     @NonNull
     @Override
     public CustomAdapter_Education_All.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.education_list_all_form,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.study_list_form,parent,false);
         CustomAdapter_Education_All.CustomViewHolder customViewHolder = new CustomAdapter_Education_All.CustomViewHolder(view);
         return customViewHolder;
     }
@@ -62,6 +62,8 @@ public class CustomAdapter_Education_All extends RecyclerView.Adapter<CustomAdap
 
 
             view = itemView;
+
+
 
 
 

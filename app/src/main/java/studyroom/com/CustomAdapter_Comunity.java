@@ -37,6 +37,7 @@ public class CustomAdapter_Comunity extends RecyclerView.Adapter<CustomAdapter_C
         holder.name.setText(arrayList.get(position).getName());
         holder.title.setText(arrayList.get(position).getTitle());
         holder.memo.setText(arrayList.get(position).getMemo());
+        holder.time.setText(arrayList.get(position).getTime());
 
     }
 
@@ -49,7 +50,7 @@ public class CustomAdapter_Comunity extends RecyclerView.Adapter<CustomAdapter_C
 
         View view;
 
-        TextView name,title,memo;
+        TextView name,title,memo,time;
 
 
         public CustomViewHolder(@NonNull View itemView) {
@@ -57,6 +58,7 @@ public class CustomAdapter_Comunity extends RecyclerView.Adapter<CustomAdapter_C
             this.name = itemView.findViewById(R.id.name);
             this.title = itemView.findViewById(R.id.title);
             this.memo = itemView.findViewById(R.id.memo);
+            this.time = itemView.findViewById(R.id.time);
 
 
             view = itemView;
@@ -69,6 +71,7 @@ public class CustomAdapter_Comunity extends RecyclerView.Adapter<CustomAdapter_C
                     intent.putExtra("name",arrayList.get(position).getName());
                     intent.putExtra("title",arrayList.get(position).getTitle());
                     intent.putExtra("memo",arrayList.get(position).getMemo());
+                    intent.putExtra("key",arrayList.get(position).getKey());
                     intent.putExtra("layout","커뮤니티");
                     context.startActivity(intent);
                 }

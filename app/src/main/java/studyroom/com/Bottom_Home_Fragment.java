@@ -1,9 +1,11 @@
 package studyroom.com;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -37,7 +39,6 @@ public class Bottom_Home_Fragment extends Fragment {
     RecyclerView recyclerview2;
     RecyclerView.Adapter adapter2;
 
-
     public Bottom_Home_Fragment() {
     }
 
@@ -61,7 +62,7 @@ public class Bottom_Home_Fragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerview.setLayoutManager(linearLayoutManager);
         arrayList = new ArrayList<>();
-        adapter= new CustomAdapter_Education_All(arrayList, getActivity());
+        adapter= new CustomAdapter_Education2(arrayList, getActivity());
         recyclerview.setAdapter(adapter);
 
         new Thread(new Runnable() {
@@ -96,13 +97,15 @@ public class Bottom_Home_Fragment extends Fragment {
 
 
 
+
+
         recyclerview2=(RecyclerView)view.findViewById(R.id.recyclerview2);
         LinearLayoutManager linearLayoutManager2 =new LinearLayoutManager(getActivity());
         linearLayoutManager2.setReverseLayout(true); //리사이클러뷰 역순으로 보여짐
         linearLayoutManager2.setStackFromEnd(true);
         recyclerview2.setLayoutManager(linearLayoutManager2);
         arrayList2 = new ArrayList<>();
-        adapter2= new CustomAdapter_Etc_Home(arrayList2, getActivity());
+        adapter2= new CustomAdapter_Comunity(arrayList2, getActivity());
         recyclerview2.setAdapter(adapter2);
 
         database2=FirebaseDatabase.getInstance("https://doctorlinkapp-222b7-default-rtdb.firebaseio.com/");
