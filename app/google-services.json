@@ -46,7 +46,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1093805832555:android:da98a93ebe2f22cf50f42e",
         "android_client_info": {
-          "package_name": "doctorlink.co.kr"
+          "package_name": "kr.co.doctorlink"
         }
       },
       "oauth_client": [
